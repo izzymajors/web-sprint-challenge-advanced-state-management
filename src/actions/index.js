@@ -8,13 +8,13 @@ export const fetchSmurfs = () => dispatch => {
     dispatch(smurfFetchLoading());
 
     axios
-    .get('http:/localhost:3333/smurfs')
+    .get("http:/localhost:3333/smurfs")
     .then(res => {
         dispatch(smurfFetchLoading(res.data.quote));
     })
     .catch(err =>{
         dispatch(err => {
-            dispatch(fetchSmurfFail(err.Response.code));
+            dispatch(fetchSmurfFail(err.Response));
         });
     });
     //1. start load

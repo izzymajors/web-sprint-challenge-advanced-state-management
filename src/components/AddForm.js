@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { fetchSmurfFail } from '../actions/index';
+import addSmurf from '../'
+
 
 const AddForm = (props) => {
     const [state, setState] = useState({
@@ -9,6 +12,7 @@ const AddForm = (props) => {
     });
 
     const handleChange = e => {
+    
         setState({
             [e.target.name]:e.target.value
         });
@@ -17,11 +21,11 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            errorMessage = "Name, position and nickname fields are required.";
+            fetchSmurfFail = "Name, position and nickname fields are required.";
         }
     }
 
-    const errorMessage = "";
+    const fetchSmurfFail = "";
 
     return(<section>
         <h2>Add Smurf</h2>
@@ -43,9 +47,9 @@ const AddForm = (props) => {
                 <textarea onChange={handleChange} value={state.description} name="description" id="description" />
             </div>
             {
-                errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
+                fetchSmurfFail && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {fetchSmurfFail}</div>
             }
-            <button>Submit Smurf</button>
+            <button onClick={handleSubmit}>Submit Smurf</button>
         </form>
     </section>);
 }

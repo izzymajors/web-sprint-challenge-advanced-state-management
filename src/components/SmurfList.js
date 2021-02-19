@@ -1,5 +1,6 @@
 import React from 'react';
 import Smurf from './Smurf';
+import {fetchSmurfs, smurfFetchLoading} from '../actions/index';
 
  const SmurfList = ()=> {
     const isLoading = false;
@@ -11,12 +12,13 @@ import Smurf from './Smurf';
         description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
     }
 
-    if (isLoading) {
+    if (smurfFetchLoading) {
         return <h1>Loading...</h1>;
     }
 
     return(<div className="listContainer">
-        <Smurf smurf={testSmurf}/>
+        <Smurf smurf={fetchSmurfs.map(fetchSmurfs)}/>
+        
     </div>);
 }
 
