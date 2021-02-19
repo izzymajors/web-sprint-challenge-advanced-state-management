@@ -4,13 +4,20 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 
+
+import { Provider } from  "react-redux";
+
+import Store from "./store";
+
 const { worker } = require('./mocks/browser');
 worker.start();
 
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
-    <App />, 
+    <Provider store={Store}>
+    <App />
+    </Provider>, 
     rootElement
 );
 
